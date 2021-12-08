@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Finger Paint', cursive;
+  background: #ee81f6;
+}
+
+/* global */
+img {
+  max-width: 100%;
+  width: 100%;
+}
+h1 {
+  font-size: 4rem;
+}
+h3 {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+p {
+  font-size: 1.2rem;
+}
+
+.btn {
+  outline: 0;
+  border: 4px solid #fff;
+  border-radius: 30px;
+  font-weight: bold;
+  font-family: 'Finger Paint', cursive;
+  text-transform: uppercase;
+  background: none;
+  color: #fff;
+  padding: 5px 12px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.buy__wrapper {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+.buy__wrapper p,
+.buy__wrapper button {
+  font-size: 2rem;
+}
+.buy__wrapper button {
+  border-radius: 10px;
+  padding: 0 20px;
+  background: none;
+  border: 2px solid #fff;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* section */
+.header__logo img {
+  max-width: 120px;
+  width: 100%;
+}
+.header__logo {
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+}
+.main__wrapper {
+  max-width: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  align-items: center;
+}
+
+.container {
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+}
+.left__col {
+  max-width: 800px;
+  width: 100%;
+  align-self: flex-end;
+}
+
+.right__col {
+  font-family: 'Finger Paint', cursive;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .main__wrapper {
+    grid-template-columns: 1fr;
+  }
+  .right__col {
+    margin-top: 1rem;
+  }
+  .err__msg {
+    font-size: 1rem !important;
+    text-align: center;
+  }
+}
