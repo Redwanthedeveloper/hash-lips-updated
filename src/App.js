@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { connect } from './redux/blockchain/blockchainActions';
 import { fetchData } from './redux/data/dataActions';
 import './styles/App.css';
-import logo from './images/logo-1.png';
-import gifImage from './images/buto-head.gif';
+import logo from './images/logo.png';
+import bg from './images/bg.jpg';
 
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
@@ -111,112 +111,108 @@ function App() {
   return (
     <>
       <div className='main'>
+        <div className='header__logo'>
+          <img src={logo} alt='logo' />
+        </div>
         <div className='container'>
-          <div className='header__logo'>
-            <img src={logo} alt='logo' />
-          </div>
-          <div className='main__wrapper'>
-            <div className='left__col'>
-              <img src={gifImage} alt='' />
+          <div></div>
+          <div className='right__col'>
+            <h3 className='title'>Mint buto head</h3>
+            <h1 className='count'>
+              {data.totalSupply} / {CONFIG.MAX_SUPPLY}
+            </h1>
+            <h3 className='sub__title'>0.1 eth per Buto head</h3>
+            <div className='description'>
+              <p>Excluding gas fee </p>
+              <p>connect to ethereum network</p>
             </div>
-            <div className='right__col'>
-              <h3 className='title'>Mint buto head</h3>
-              <h1 className='count'>
-                {data.totalSupply} / {CONFIG.MAX_SUPPLY}
-              </h1>
-              <h3 className='sub__title'>0.1 eth per Buto head</h3>
-              <div className='description'>
-                <p>Excluding gas fee </p>
-                <p>connect to ethereum network</p>
-              </div>
 
-              {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
-                <>
-                  <p className='font-bold text-default'>The sale has ended.</p>
-                  <p className='font-bold text-default'>
-                    You can still find {CONFIG.NFT_NAME} on
-                  </p>
+            {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
+              <>
+                <p className='font-bold text-default'>The sale has ended.</p>
+                <p className='font-bold text-default'>
+                  You can still find {CONFIG.NFT_NAME} on
+                </p>
 
-                  <a target='_blank' href={CONFIG.MARKETPLACE_LINK}>
-                    {CONFIG.MARKETPLACE}
-                  </a>
-                </>
-              ) : (
-                <>
-                  {blockchain.account === '' ||
-                  blockchain.smartContract === null ? (
-                    <>
-                      <button
-                        className='btn'
-                        onClick={(e) => {
-                          e.preventDefault();
-                          dispatch(connect());
-                          getData();
-                        }}
-                      >
-                        Connect
-                      </button>
-                      {blockchain.errorMsg !== '' ? (
-                        <>
-                          <p className='err__msg'>{blockchain.errorMsg}</p>
-                        </>
-                      ) : null}
-                    </>
-                  ) : (
-                    <>
-                      <p className='err__msg'>{feedback}</p>
+                <a target='_blank' href={CONFIG.MARKETPLACE_LINK}>
+                  {CONFIG.MARKETPLACE}
+                </a>
+              </>
+            ) : (
+              <>
+                {blockchain.account === '' ||
+                blockchain.smartContract === null ? (
+                  <>
+                    <button
+                      className='btn'
+                      onClick={(e) => {
+                        e.preventDefault();
+                        dispatch(connect());
+                        getData();
+                      }}
+                    >
+                      Connect
+                    </button>
+                    {blockchain.errorMsg !== '' ? (
                       <>
-                        <div className='buy__wrapper'>
-                          <div>
-                            <button
-                              className=''
-                              disabled={claimingNft ? 1 : 0}
-                              onClick={(e) => {
-                                e.preventDefault();
-                                decrementMintAmount();
-                              }}
-                            >
-                              <span className='text-xl'>-</span>
-                            </button>
-                          </div>
-
-                          <p className='text-default font-bold text-xl border px-4 py-0.5 rounded-sm'>
-                            {mintAmount}
-                          </p>
-                          <div>
-                            <button
-                              className=''
-                              disabled={claimingNft ? 1 : 0}
-                              onClick={(e) => {
-                                e.preventDefault();
-                                incrementMintAmount();
-                              }}
-                            >
-                              <span className='text-xl'>+</span>
-                            </button>
-                          </div>
-                        </div>
+                        <p className='err__msg'>{blockchain.errorMsg}</p>
                       </>
-                      <>
+                    ) : null}
+                  </>
+                ) : (
+                  <>
+                    <p className='err__msg'>{feedback}</p>
+                    <>
+                      <div className='buy__wrapper'>
                         <div>
                           <button
-                            className='btn'
+                            className=''
                             disabled={claimingNft ? 1 : 0}
                             onClick={(e) => {
                               e.preventDefault();
-                              claimNFTs();
-                              getData();
+                              decrementMintAmount();
                             }}
                           >
-                            <span>{claimingNft ? 'BUSY' : 'BUY'}</span>
+                            <span className='text-xl'>-</span>
                           </button>
                         </div>
-                      </>
+
+                        <p className='text-default font-bold text-xl border px-4 py-0.5 rounded-sm'>
+                          {mintAmount}
+                        </p>
+                        <div>
+                          <button
+                            className=''
+                            disabled={claimingNft ? 1 : 0}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              incrementMintAmount();
+                            }}
+                          >
+                            <span className='text-xl'>+</span>
+                          </button>
+                        </div>
+                      </div>
                     </>
-                  )}
-                </>
-              )}
-            </div>
+                    <>
+                      <div>
+                        <button
+                          className='btn'
+                          disabled={claimingNft ? 1 : 0}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            claimNFTs();
+                            getData();
+                          }}
+                        >
+                          <span>{claimingNft ? 'BUSY' : 'BUY'}</span>
+                        </button>
+                      </div>
+                    </>
+                  </>
+                )}
+              </>
+            )}
           </div>
         </div>
       </div>
