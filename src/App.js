@@ -115,7 +115,7 @@ function App() {
           <img src={logo} alt='logo' />
         </div>
         <div className='container'>
-          <div></div>
+          <div className='left__col'></div>
           <div className='right__col'>
             <h3 className='title'>Mint buto head</h3>
             <h1 className='count'>

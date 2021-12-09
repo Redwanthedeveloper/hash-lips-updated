@@ -73,6 +73,9 @@ p {
   padding: 40px 0;
   display: flex;
   justify-content: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 .main__wrapper {
   max-width: 100%;
@@ -85,11 +88,7 @@ p {
   margin: 0 auto;
   grid-template-columns: 2fr 1fr;
   display: grid;
-}
-.left__col {
-  max-width: 800px;
-  width: 100%;
-  align-self: flex-end;
+  height: 100%;
 }
 
 .right__col {
@@ -98,7 +97,6 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 6rem;
   align-self: center;
   justify-self: flex-start;
 }
@@ -127,6 +125,10 @@ p {
   }
   .right__col {
     justify-self: center;
+  }
+  .left__col: {
+    display: none;
+    position: absolute;
   }
 }
 
