@@ -197,7 +197,7 @@ function App() {
                     <>
                       <div>
                         <button
-                          className='btn'
+                          className='btn mint__btn'
                           disabled={claimingNft ? 1 : 0}
                           onClick={(e) => {
                             e.preventDefault();
@@ -205,7 +205,7 @@ function App() {
                             getData();
                           }}
                         >
-                          <span>{claimingNft ? 'BUSY' : 'BUY'}</span>
+                          <span>{claimingNft ? 'BUSY' : 'MINT'}</span>
                         </button>
                       </div>
                     </>

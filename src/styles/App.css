@@ -46,6 +46,16 @@ p {
   font-size: 1.2rem;
   cursor: pointer;
 }
+
+.mint__btn {
+  padding: 0.5rem 1.5rem;
+  transition: 0.4s ease;
+}
+
+.mint__btn:hover {
+  background: #ee85fd;
+}
+
 .buy__wrapper {
   display: flex;
   gap: 1.5rem;
